@@ -1,0 +1,52 @@
+<div class="group rounded-lg border-2 px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+  <h2 class="mb-3 text-2xl font-semibold">
+    {{ item.product.name }}
+    <span class="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+      -&gt;
+    </span>
+  </h2>
+  <p class="m-0 max-w-[30ch] text-sm opacity-50">
+    {{ 'R$ ' + item.product.value.toFixed(2) }}
+  </p>
+  <p class="m-0 max-w-[30ch] text-sm opacity-50">
+    {{ item.product.description }}
+  </p>
+  <ng-container *ngIf="item.product.isChecked; else addToCart">
+    <a
+      class="flex items-center justify-center gap-2 mt-4 hover:underline"
+      href="#"
+      rel="noopener noreferrer"
+      (click)="handleRemoveFromCart(item.product.id)"
+    >
+      <img
+        class="rounded-full"
+        alt="Next.js Logo"
+        src="cart-remove.svg"
+        width="25"
+        height="25"
+      />
+      <p class="m-0 max-w-[30ch] text-sm opacity-50">
+        Remover do carrinho
+      </p>
+    </a>
+  </ng-container>
+  <ng-template #addToCart>
+    <a
+      class="flex items-center justify-center gap-2 mt-4 hover:underline"
+      href="#"
+      rel="noopener noreferrer"
+      (click)="handleAddToCart(item.product)"
+    >
+      <img
+        class="rounded-full"
+        alt="Next.js Logo"
+        src="cart-add.svg"
+        width="25"
+        height="25"
+      />
+      <p class="m-0 max-w-[30ch] text-sm opacity-50">
+        Adicionar ao carrinho
+      </p>
+    </a>
+  </ng-template>
+</div>
