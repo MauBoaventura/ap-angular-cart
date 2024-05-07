@@ -1,1 +1,11 @@
-<div class="text-3xl font-bold underline"> Fucionando </div>
+<div class="grid grid-cols-5">
+  <div class="col-span-4 flex min-h-screen flex-col gap-16 p-24 ">
+    <div class="text-3xl font-bold underline"> Loja </div>
+    <div class="mb-32 grid gap-2 text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+      <app-store-item-card *ngFor="let product of productsMock" [product]="product" (handleAddToCart)="handleAddToCart(product)" (handleRemoveOneFromCart)="handleRemoveOneFromCart(product)"></app-store-item-card>
+    </div>
+  </div>
+  <div class="col-span-1 bg-gray-200">
+      <app-store-sidebar [cart]="cart" (handleAddToCart)="handleAddToCart($event)" (handleRemoveOneFromCart)="handleRemoveOneFromCart($event)" (handleCheckout)="handleCheckout()"></app-store-sidebar>
+  </div>
+</div>
